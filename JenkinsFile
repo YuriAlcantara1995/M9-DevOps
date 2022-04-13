@@ -7,5 +7,10 @@ pipeline {
                 sh 'go build -o sample main.go'
             }
         }
+        stage('Save Artifact') {
+            steps {
+                archiveArtifacts artifacts: 'sample', followSymlinks: false
+            }
+        }
     }
 }
