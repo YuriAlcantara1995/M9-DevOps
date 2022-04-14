@@ -4,7 +4,7 @@ pipeline {
     }
     
     tools {
-    	go 'null'
+    	go '1.15'
     }
 
     stages {
