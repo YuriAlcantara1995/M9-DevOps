@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Test host') {
+            steps {
+                sh 'go test'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'go build -o sample main.go'
