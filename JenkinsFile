@@ -1,8 +1,10 @@
 pipeline {
-    agent {label 'target'}
+    agent {
+    	label 'target'
+    }
     
     tools {
-    	go 'go-1.17.8'
+    	go
     }
 
     stages {
