@@ -3,10 +3,6 @@ pipeline {
     	label 'target'
     }
     
-    tools {
-    	go '1.15'
-    }
-
     stages {
         stage('Test host') {
             steps {

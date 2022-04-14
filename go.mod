@@ -1,3 +1,3 @@
 module sample
 
-go 1.16.13
+go 1.16
