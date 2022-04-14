@@ -1,6 +1,10 @@
 pipeline {
     agent {label 'target'}
     
+    tools {
+    	go 'go-1.17.8'
+    }
+
     stages {
         stage('Test host') {
             steps {
