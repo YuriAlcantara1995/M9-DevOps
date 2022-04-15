@@ -1,13 +1,15 @@
 pipeline {
-    agent {
-    	docker { 
-    		image 'golang' 
-    	}
-    }
+    //agent {
+    //	docker { 
+    //		image 'golang' 
+    //	}
+    //}
     
-    environment {
-    	XDG_CACHE_HOME = '/tmp/.cache'
-    }
+    //environment {
+    //	XDG_CACHE_HOME = '/tmp/.cache'
+    //}
+    
+    agent any
     
     stages {
         stage('Test host') {
