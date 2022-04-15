@@ -25,5 +25,12 @@ pipeline {
                 archiveArtifacts artifacts: 'sample', followSymlinks: false
             }
         }
+        stage('Login into DockerHub') {
+        	steps {
+        	    withCredentials([sshUserPrivateKey(credentialsId: "docker-token", usernameVariable: 'username', passwordVariable: 'password')]) {
+         	    sh 'docker  login --username ${username} --password ${password}'    	
+         	    }
+        	}
+        }
     }
 }
