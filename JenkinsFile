@@ -34,5 +34,15 @@ pipeline {
          	    }
         	}
         }
+        stage('Build docker image') {
+        	steps {
+        		sh 'docker build . --tag yuriao/devops:{BUILD_ID}'
+        	}
+        }
+        stage('Push docker image') {
+        	steps {
+        		sh 'docker push yuriao/devops:{BUILD_ID}'
+        	}
+        }
     }
 }
