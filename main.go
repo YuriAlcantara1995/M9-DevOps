@@ -14,7 +14,7 @@ type Simple struct {
 }
 
 func SimpleFactory(host string) Simple {
-	return Simple{"Go App Example using multibranch pipline", "Integration and Deploy multibranch pipeline using a Go app example; author:Yuri Alcantara", host}
+	return Simple{"Go App Example using multibranch pipline", "Integration and Deploy multibranch pipeline using a Go app example; author:Yuri Alcantara", "Bug"}
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
