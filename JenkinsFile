@@ -44,5 +44,11 @@ pipeline {
         		sh 'docker push yuriao/devops:${BUILD_ID}'
         	}
         }
+        stage('Run PROD deployment') {
+        	steps {
+        	build job: 'DeployPipelineExample', parameters: [string(name: 'DEPLOY_TO', value: 'prod'),
+        							   string(name: 'PROJECT_NAME', value: 'IntegrationMultibranchPipelineExample/master')]
+        							  }
+        }
     }
 }
