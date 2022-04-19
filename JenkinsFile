@@ -45,8 +45,10 @@ pipeline {
         	}
         }
         stage('Run QA deployment') {
+        	steps {
         	build job: 'DeployPipelineExample', parameters: [string(name: 'DEPLOY_TO', value: 'qa'),
         							   string(name: 'PROJECT_NAME', value: 'IntegrationMultibranchPipelineExample/qa')]
+        							  }
         }
     }
 }
