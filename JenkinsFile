@@ -44,5 +44,9 @@ pipeline {
         		sh 'docker push yuriao/devops:${BUILD_ID}'
         	}
         }
+        stage('Run QA deployment') {
+        	build job: 'DeployPipelineExample', parameters: [string(name: 'DEPLOY_TO', value: 'qa'),
+        							   string(name: 'PROJECT_NAME', value: 'IntegrationMultibranchPipelineExample/qa')]
+        }
     }
 }
