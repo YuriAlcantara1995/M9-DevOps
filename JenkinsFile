@@ -45,10 +45,24 @@ pipeline {
         	}
         }
         stage('Run QA deployment') {
+        	when {
+        		not {
+        			branch 'master'
+        		}
+      		}
         	steps {
-        	build job: 'DeployPipelineExample', parameters: [string(name: 'DEPLOY_TO', value: 'qa'),
-        							   string(name: 'PROJECT_NAME', value: 'IntegrationMultibranchPipelineExample/qa')]
-        							  }
+        		build job: 'DeployPipelineExample', parameters: [string(name: 'DEPLOY_TO', value: 'qa'),
+        							   string(name: 'BRANCH_NAME', value: 'qa')]
+        	}
+        }
+        stage('Run PROD deployment') {
+        	when {
+        		branch 'master'
+      		}
+        	steps {
+        		build job: 'DeployPipelineExample', parameters: [string(name: 'DEPLOY_TO', value: 'prod'),
+        							   string(name: 'BRANCH_NAME', value: 'master')]
+        	}
         }
     }
 }
