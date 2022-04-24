@@ -51,6 +51,8 @@ pipeline {
         		}
       		}
         	steps {
+        		build job: 'DeployK8sExample', parameters: [string(name: 'DEPLOY_TO', value: 'qa'),
+        							   string(name: 'IMAGE_TAG', value: '${BUILD_ID}')]        		
         		build job: 'DeployPipelineExample', parameters: [string(name: 'DEPLOY_TO', value: 'qa'),
         							   string(name: 'BRANCH_NAME', value: 'qa')]
         	}
@@ -60,6 +62,8 @@ pipeline {
         		branch 'master'
       		}
         	steps {
+        		build job: 'DeployK8sExample', parameters: [string(name: 'DEPLOY_TO', value: 'production'),
+        							   string(name: 'IMAGE_TAG', value: '${BUILD_ID}')]
         		build job: 'DeployPipelineExample', parameters: [string(name: 'DEPLOY_TO', value: 'prod'),
         							   string(name: 'BRANCH_NAME', value: 'master')]
         	}
