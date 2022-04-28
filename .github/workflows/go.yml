@@ -41,7 +41,7 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.0
         with:
-          name: sample
+          name: artifact
           path: sample
           
       - name: run deploy
