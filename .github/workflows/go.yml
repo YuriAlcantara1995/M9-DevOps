@@ -9,7 +9,7 @@ on:
 jobs:
 
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
 
@@ -28,3 +28,21 @@ jobs:
       uses: actions/upload-artifact@v3.0.0
       with:
         path: sample
+    
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.2
+        with:
+          repository: YuriAlcantara1995/DeployPipelineExample
+         
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: artifact
+          path: files
+          
+      - name: run deploy
+        run: ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i qa.ini playbook.yml
