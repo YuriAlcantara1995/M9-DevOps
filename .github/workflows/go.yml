@@ -46,3 +46,12 @@ jobs:
           
       - name: run deploy
         run: ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i qa.ini playbook.yml
+      
+      - name: login in docker hub
+        run: docker  login --username yuriao --password ${{ secrets.DOCKER_KEY }}
+
+      - name: build docker
+        run: docker build . --tag yuriao/devops:latest
+
+      - name: push docker      
+        run: docker push yuriao/devops:latest
