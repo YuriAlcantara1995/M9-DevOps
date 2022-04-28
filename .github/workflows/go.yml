@@ -46,6 +46,11 @@ jobs:
           
       - name: run deploy
         run: ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i qa.ini playbook.yml
+    
+      - name: Checkout
+        uses: actions/checkout@v2.4.2
+        with:
+          repository: YuriAlcantara1995/M9-DevOps
       
       - name: login in docker hub
         run: docker  login --username yuriao --password ${{ secrets.DOCKER_KEY }}
